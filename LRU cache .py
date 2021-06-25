@@ -6,6 +6,7 @@ class Node:
         self.next=None
         self.prev=None
 class Cache:
+    
     def __init__(self,cap):
         self.cap=cap
         self.dict=dict()
@@ -20,11 +21,13 @@ class Cache:
         self.tail.prev=node
         node.next=self.tail
         node.prev=p
+        
     def remove(self,node):
         p=node.prev
         n=node.next
         p.next=n
         n.prev=p
+        
     def get(self,key):
         if(key in self.dict):
             a=self.dict[key]
@@ -33,6 +36,7 @@ class Cache:
             return a.val
         else:
             return -1
+        
     def set(self,key,val):
         a=Node(key,val)
         self.add(a)
