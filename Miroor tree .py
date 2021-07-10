@@ -6,6 +6,9 @@ class Node:
         self.data=data
     
 def mirror(root):
+    
+    if( nor root):
+        return None
     l=[]
     l.append(root)
     while(len(l)>0):
