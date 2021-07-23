@@ -1,0 +1,44 @@
+import random
+class myds:
+    def __init__(self):
+        self.arr=[]
+        self.hashd={}
+        
+    def add(self,x):
+        if x in self.hashd:
+            return 
+        a=len(self.arr)
+        self.hashd[x]=a
+        self.arr.append(x)
+        
+    def remove(self,x):
+        if(x in self.hashd):
+            index=self.hashd[x]
+            del self.hashd[x]
+            size=len(self.arr)
+            last=self.arr[size-1]
+            self.arr[index],self.arr[size-1]=self.arr[size-1],self.arr[index]
+            del self.arr[-1]
+            self.hashd[last]=index
+        else:
+            return 
+        
+    def random(self):
+        a=random.randrange(0,len(self.arr))
+        return self.arr[a]
+        
+    def search(self,x):
+        return self.hashd[x]
+        
+if __name__=="__main__":
+    ds = myds()
+    ds.add(10)
+    ds.add(20)
+    ds.add(30)
+    ds.add(40)
+    print(ds.search(30))
+    ds.remove(20)
+    ds.add(50)
+    print(ds.search(50))
+    print(ds.random())
+    
