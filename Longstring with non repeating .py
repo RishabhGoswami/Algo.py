@@ -1,25 +1,17 @@
-s='geeksforgeeks'
-h={}
-st=0
-maxl=0
-start=0
-
-for i in range(0,len(s)):
-    if(s[i] not in h):
-        h[s[i]]=i
-    else:
-        if(h[s[i]]>=st):
-            curl=i-st
-            if(curl>maxl):
-                maxl=curl
-                start=st
-            st=h[s[i]]+1
-        h[s[i]]=i
-        
-if(maxl<(i-st)):
-    maxl=i-st
-    start=st
-    
-print(s[start:start+maxl])
-    
+def longest(arr):
+    s=dict()
+    left=0
+    right=0
+    n=len(arr)
+    maxl=-1
+    while(right<n):
+        if(arr[right] in s):
+            left=max(left,s[arr[right]]+1)
+        s[arr[right]]=right
+        maxl=max(maxl,(right-left)+1)
+        right+=1
+    return maxl
             
+    
+arr='abcaabcdba'
+print(longest(arr))
