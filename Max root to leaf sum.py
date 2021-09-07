@@ -4,25 +4,24 @@ class Node:
         self.left=None
         self.right=None
         
-def rootpathsum(root,l,mins):
+def rootpathsum(root,c,mins):
     if(root is None):
         return 0
     
     else:
-        l.append(root.data)
+        c=c+root.data
         if(root.left is None and  root.right is None):
-            if(sum(l)>mins[0]):
-                mins[0]=sum(l)
+            if(c>mins[0]):
+                mins[0]=c
         else:
-            rootpathsum(root.left,l,mins)
-            rootpathsum(root.right,l,mins)
-        l.pop()
+            rootpathsum(root.left,c,mins)
+            rootpathsum(root.right,c,mins)
 
 
 def temp(root):
-    l=[]
+    c=0
     mins=[-1]
-    (rootpathsum(root,l,mins))
+    (rootpathsum(root,c,mins))
     print(mins[0])
 
 if __name__ == '__main__':
